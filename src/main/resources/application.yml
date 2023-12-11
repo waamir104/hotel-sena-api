@@ -4,4 +4,4 @@ application:
 
 spring:
   profiles:
-    active: @spring.profiles.active@
+    active: @SPRING_PROFILE@

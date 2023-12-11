@@ -23,6 +23,7 @@
 			<properties>
 				<spring.profiles.active>dev</spring.profiles.active>
 			</properties>
+			<SPRING_PROFILE>dev</SPRING_PROFILE>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
@@ -32,6 +33,7 @@
 			<properties>
 				<spring.profiles.active>prod</spring.profiles.active>
 			</properties>
+			<SPRING_PROFILE>prod</SPRING_PROFILE>
 		</profile>
 	</profiles>
 
