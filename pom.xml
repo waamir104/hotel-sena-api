@@ -21,9 +21,8 @@
 		<profile>
 			<id>dev</id>
 			<properties>
-				<spring.profiles.active>dev</spring.profiles.active>
+				<SPRING_PROFILE>dev</SPRING_PROFILE>
 			</properties>
-			<SPRING_PROFILE>dev</SPRING_PROFILE>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
@@ -31,9 +30,8 @@
 		<profile>
 			<id>prod</id>
 			<properties>
-				<spring.profiles.active>prod</spring.profiles.active>
+				<SPRING_PROFILE>prod</SPRING_PROFILE>
 			</properties>
-			<SPRING_PROFILE>prod</SPRING_PROFILE>
 		</profile>
 	</profiles>
 
