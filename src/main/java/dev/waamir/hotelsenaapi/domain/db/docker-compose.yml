@@ -3,7 +3,6 @@ services:
     image: mongo
     container_name: mongo_db
     port:
-      - 80:27017
       - 27017:27017
     volumes:
       - mongo:/data
