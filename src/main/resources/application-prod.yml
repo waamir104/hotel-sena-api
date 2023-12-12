@@ -3,6 +3,8 @@ application:
     jwt:
       secret:
         key: ${JWT_SECRET}
+  front-end:
+    host: http://localhost:4200
 
 spring:
   data:
