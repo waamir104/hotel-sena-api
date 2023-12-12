@@ -1,0 +1,36 @@
+application:
+  security:
+    jwt:
+      secret:
+        key: ${JWT_SECRET}
+  front-end:
+    host: http://localhost:4200
+
+spring:
+  data:
+    mongodb:
+      uri: ${DATABASE_URI}
+    
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PWD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  port: 8080
+  servlet:
+    encoding:
+      enabled: true
+      charset: UTF-8
+
+cors:
+  allowed:
+    methods: PUT, POST, GET, DELETE
+  maxAge: 3600
