@@ -34,7 +34,7 @@ public class TokenService implements ITokenRepository<Token> {
 
     @Override
     public List<Token> getAllValidTokensByUser(User user) {
-        return tokenMongoRepository.findAllValidTokensByUserId(null);
+        return tokenMongoRepository.findAllValidTokensByUser(user);
     }
 
     @Override

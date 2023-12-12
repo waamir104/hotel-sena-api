@@ -23,7 +23,7 @@ public class AccountVerificationService implements IAccountVerificationRepositor
 
     @Override
     public Optional<AccountVerification> getByUser(User user) {
-        return accountVerificationMongoRepository.findByUserId(user.getId());
+        return accountVerificationMongoRepository.findByUser(user);
     }
 
     @Override

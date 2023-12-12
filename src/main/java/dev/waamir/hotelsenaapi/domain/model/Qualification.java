@@ -22,7 +22,7 @@ public class Qualification {
     @Field(name = "guest_id")
     private Guest guest;
     @Field(name = "stars")
-    private Integer stars;
+    private long stars;
     @Field(name = "description")
     private String description;
 }
