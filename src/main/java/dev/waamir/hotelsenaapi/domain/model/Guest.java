@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -35,6 +36,6 @@ public class Guest {
     @Field(name = "address")
     private Address address;
     @Field(name = "phone_number")
-    private PhoneNumber[] phoneNumber;
+    private List<PhoneNumber> phoneNumbers;
 
 }

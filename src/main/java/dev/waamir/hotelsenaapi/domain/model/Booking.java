@@ -11,12 +11,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Document(collection = "bookings")
 public class Booking {
+    
     @Id
     @Field(name = "_id")
     private String id;
@@ -31,8 +34,6 @@ public class Booking {
     private Double totalPayment;
     @Field(name = "booking_status")
     private BookingStatus bookingStatus;
-    @Field(name = "payment_type")
-    private PaymentType[] paymentType;
-
-
+    @Field(name = "payments")
+    private List<PaymentTypeBooking> payments;
 }
