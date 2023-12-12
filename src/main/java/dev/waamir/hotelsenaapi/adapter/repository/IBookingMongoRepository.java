@@ -6,10 +6,14 @@ import dev.waamir.hotelsenaapi.domain.model.Guest;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IBookingMongoRepository extends MongoRepository<Booking, String> {
 
     Page<Booking> findByGuest(Guest guest, Pageable pagination);
+
+    @Query("{ 'booking_status' : ?0 }")
+    long countByBookingStatus(String bookingStatus);
 }
