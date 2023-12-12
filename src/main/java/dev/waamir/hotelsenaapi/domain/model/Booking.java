@@ -31,6 +31,8 @@ public class Booking {
     private Double totalPayment;
     @Field(name = "booking_status")
     private BookingStatus bookingStatus;
+    @Field(name = "payment_type")
+    private PaymentType[] paymentType;
 
 
 }
