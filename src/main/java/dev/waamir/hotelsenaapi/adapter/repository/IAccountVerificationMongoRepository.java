@@ -7,12 +7,12 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import dev.waamir.hotelsenaapi.domain.model.AccountVerification;
+import dev.waamir.hotelsenaapi.domain.model.User;
 
 @Repository
 public interface IAccountVerificationMongoRepository extends MongoRepository<AccountVerification, String> {
     
-    @Query("{ 'user_id' : ?0 }")
-    Optional<AccountVerification> findByUserId(String userId);
+    Optional<AccountVerification> findByUser(User user);
 
     @Query(value = "{ 'url' : ?0 }", count = true)
     Integer countByUrl(String url);

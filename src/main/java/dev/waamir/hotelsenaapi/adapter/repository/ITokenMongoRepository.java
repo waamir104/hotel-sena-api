@@ -8,12 +8,13 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import dev.waamir.hotelsenaapi.domain.model.Token;
+import dev.waamir.hotelsenaapi.domain.model.User;
 
 @Repository
 public interface ITokenMongoRepository extends MongoRepository<Token, String> {
     
     @Query("{ 'user_id' : ?0, 'revoked' : false }")
-    List<Token> findAllValidTokensByUserId(String userId);
+    List<Token> findAllValidTokensByUser(User user);
 
     @Query("{ 'token' : ?0 }")
     Optional<Token> findByToken(String token);
