@@ -21,8 +21,8 @@ public class Guest {
     @Id
     @Field(name = "_id")
     private String id;
-    @Field(name = "doc_guest")
-    private Long docGuest;
+    @Field(name = "doc_number")
+    private Long docNumber;
     @Field(name = "doc_type")
     private String docType;
     @Field(name = "name")

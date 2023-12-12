@@ -20,7 +20,7 @@ public class Qualification {
     private String id;
     @DBRef
     @Field(name = "guest_id")
-    private String guest;
+    private Guest guest;
     @Field(name = "stars")
     private Integer stars;
     @Field(name = "description")
