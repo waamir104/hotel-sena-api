@@ -34,5 +34,7 @@ public class Guest {
     private String email;
     @Field(name = "address")
     private Address address;
+    @Field(name = "phone_number")
+    private PhoneNumber[] phoneNumber;
 
 }
