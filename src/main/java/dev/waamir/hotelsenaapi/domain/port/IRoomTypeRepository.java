@@ -11,7 +11,7 @@ import dev.waamir.hotelsenaapi.domain.model.RoomType;
 public interface IRoomTypeRepository<T extends RoomType> {
 
     T create(T roomType);
-    Optional<T> getById(Long id);
+    Optional<T> getById(String id);
     Optional<T> getByName(String name);
     Long countByName(String name);
     void delete(T roomType);

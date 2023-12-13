@@ -10,7 +10,7 @@ import dev.waamir.hotelsenaapi.domain.model.Room;
 
 public interface IRoomRepository<T extends Room> {
     T create(T room);
-    Optional<T> getById(Long id);
+    Optional<T> getById(String id);
     Optional<T> getByNumber(Long number);
     void delete(T room);
     void update(T room);

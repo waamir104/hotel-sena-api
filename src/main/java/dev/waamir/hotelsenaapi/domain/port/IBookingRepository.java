@@ -6,11 +6,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import dev.waamir.hotelsenaapi.domain.model.Booking;
+import dev.waamir.hotelsenaapi.domain.model.Guest;
 
 public interface IBookingRepository<T extends Booking> {
     T create(T booking);
     Optional<T> getById(String id);
-    Page<T> listByGuestEmail(String email, Pageable pagination);
+    Page<T> listByGuestEmail(Guest guest, Pageable pagination);
     void delete(T booking);
     void update(T booking);
     Page<T> list(Pageable pagination);

@@ -7,7 +7,7 @@ import java.util.Optional;
 
 
 @Repository
-public interface IRoomMongoRepository extends MongoRepository<Room,String> {
+public interface IRoomMongoRepository extends MongoRepository<Room, String> {
 
-    Optional<Room> findByNumber(Integer number);
+    Optional<Room> findByNumber(Long number);
 }
