@@ -1,5 +1,6 @@
 package dev.waamir.hotelsenaapi.domain.model;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -35,12 +36,14 @@ public class User implements UserDetails {
     @DBRef
     @Field(name = "role_id")
     private Role role;
+    @Field(name = "created_at")
+    private LocalDateTime createdAt;
     
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(this.role.getName()));
+        return List.of(new SimpleGrantedAuthority(this.role.getName().toString()));
     }
 
     @Override

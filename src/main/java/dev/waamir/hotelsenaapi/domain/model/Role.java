@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import dev.waamir.hotelsenaapi.domain.enumeration.RoleName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,5 +21,5 @@ public class Role {
     @Field(name = "_id")
     private String id;
     @Field(name = "name")
-    private String name;
+    private RoleName name;
 }
