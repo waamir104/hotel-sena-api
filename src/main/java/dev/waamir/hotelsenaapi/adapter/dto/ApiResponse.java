@@ -17,5 +17,5 @@ public class ApiResponse {
     private LocalDateTime timeStamp;
     private HttpStatusCode status;
     private String message;
-    private String data;
+    private Object data;
 }
