@@ -1,5 +1,6 @@
 package dev.waamir.hotelsenaapi.adapter.repository;
 
+import dev.waamir.hotelsenaapi.domain.enumeration.BookingStatus;
 import dev.waamir.hotelsenaapi.domain.model.Booking;
 import dev.waamir.hotelsenaapi.domain.model.Guest;
 
@@ -15,5 +16,5 @@ public interface IBookingMongoRepository extends MongoRepository<Booking, String
     Page<Booking> findByGuest(Guest guest, Pageable pagination);
 
     @Query("{ 'booking_status' : ?0 }")
-    long countByBookingStatus(String bookingStatus);
+    long countByBookingStatus(BookingStatus bookingStatus);
 }

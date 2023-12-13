@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import dev.waamir.hotelsenaapi.adapter.repository.IBookingMongoRepository;
+import dev.waamir.hotelsenaapi.domain.enumeration.BookingStatus;
 import dev.waamir.hotelsenaapi.domain.model.Booking;
 import dev.waamir.hotelsenaapi.domain.model.Guest;
 import dev.waamir.hotelsenaapi.domain.port.IBookingRepository;
@@ -49,7 +50,7 @@ public class BookingService implements IBookingRepository<Booking> {
     }
 
     @Override
-    public long countByBookingStatus(String bookingStatus) {
+    public long countByBookingStatus(BookingStatus bookingStatus) {
         return bookingMongoRepository.countByBookingStatus(bookingStatus);
     }
 

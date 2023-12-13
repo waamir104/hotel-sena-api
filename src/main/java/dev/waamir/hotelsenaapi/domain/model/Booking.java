@@ -32,8 +32,8 @@ public class Booking {
     private LocalDate checkOut;
     @Field(name = "total_payment")
     private Double totalPayment;
-    @Field(name = "booking_status")
-    private BookingStatus bookingStatus;
+    @Field(name = "status")
+    private BookingStatus status;
     @Field(name = "payments")
     private List<PaymentTypeBooking> payments;
 }

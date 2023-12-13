@@ -12,14 +12,14 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document(collection = "Rooms")
+@Document(collection = "rooms")
 
 public class Room {
     @Id
     @Field(name = "_id")
     private String id;
     @Field(name = "number")
-    private Integer number;
+    private Long number;
     @Field(name = "description")
     private String description;
     @DBRef

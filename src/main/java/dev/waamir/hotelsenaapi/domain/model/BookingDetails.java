@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document
+@Document(collection = "booking_details")
 public class BookingDetails {
     
     @Id
@@ -24,7 +24,7 @@ public class BookingDetails {
     @Field(name = "booking_id")
     private Booking booking;
     @Field(name = "cant_people")
-    private Integer cantPeople;
+    private Long cantPeople;
     @Field(name = "observations")
     private String observations;
 }

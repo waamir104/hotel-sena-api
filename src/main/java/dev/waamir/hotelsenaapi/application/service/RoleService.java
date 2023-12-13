@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import dev.waamir.hotelsenaapi.adapter.repository.IRoleMongoRepository;
+import dev.waamir.hotelsenaapi.domain.enumeration.RoleName;
 import dev.waamir.hotelsenaapi.domain.model.Role;
 import dev.waamir.hotelsenaapi.domain.port.IRoleRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +30,7 @@ public class RoleService implements IRoleRepository<Role> {
     }
 
     @Override
-    public Optional<Role> getByName(String name) {
+    public Optional<Role> getByName(RoleName name) {
         return roleMongoRepository.findByName(name);
     }
 

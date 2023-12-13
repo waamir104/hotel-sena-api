@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document(collection = "Guests")
+@Document(collection = "guests")
 public class Guest {
 
     @Id
@@ -35,7 +35,7 @@ public class Guest {
     private String email;
     @Field(name = "address")
     private Address address;
-    @Field(name = "phone_number")
+    @Field(name = "phone_numbers")
     private List<PhoneNumber> phoneNumbers;
 
 }

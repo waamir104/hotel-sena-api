@@ -12,15 +12,15 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document(collection = "RoomTypes")
+@Document(collection = "room_types")
 public class RoomType {
     @Id
     @Field(name = "_id")
     private String id;
     @Field(name = "name")
     private String name;
-    @Field(name = "room_price")
-    private Double roomPrice;
+    @Field(name = "daily_price")
+    private Double dailyPrice;
     @Field(name = "description")
     private String description;
 }
