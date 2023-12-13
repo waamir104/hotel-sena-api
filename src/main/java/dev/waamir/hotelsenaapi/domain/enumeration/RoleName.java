@@ -1,5 +1,5 @@
 package dev.waamir.hotelsenaapi.domain.enumeration;
 
-public enum RoleNames {
+public enum RoleName {
     ADMIN, GUEST, WORKER
 }
