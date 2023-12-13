@@ -31,8 +31,8 @@ public class User implements UserDetails {
     private String username;
     @Field(name = "password")
     private String password;
-    @Field(name = "is_enabled")
-    private Boolean isEnabled;
+    @Field(name = "enabled")
+    private Boolean enabled;
     @DBRef
     @Field(name = "role_id")
     private Role role;
@@ -73,7 +73,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return this.isEnabled;
+        return this.enabled;
     }
     
 }
