@@ -9,7 +9,12 @@ application:
 spring:
   data:
     mongodb:
-      uri: ${DATABASE_URI}
+      username: ${DATABASE_USERNAME}
+      password: ${DATABASE_PWD}
+      host: ${DATABASE_HOST}
+      port: 27017
+      database: ${DATABASE_NAME}
+      authentication-database: ${DATABASE_AUTH}
     
   mail:
     host: smtp.gmail.com
