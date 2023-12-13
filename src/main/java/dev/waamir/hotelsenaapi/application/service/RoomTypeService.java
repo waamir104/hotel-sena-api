@@ -12,6 +12,9 @@ import dev.waamir.hotelsenaapi.domain.model.RoomType;
 import dev.waamir.hotelsenaapi.domain.port.IRoomTypeRepository;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class RoomTypeService implements IRoomTypeRepository<RoomType> {

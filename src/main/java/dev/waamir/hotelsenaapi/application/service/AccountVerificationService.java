@@ -10,6 +10,9 @@ import dev.waamir.hotelsenaapi.domain.model.User;
 import dev.waamir.hotelsenaapi.domain.port.IAccountVerificationRepository;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class AccountVerificationService implements IAccountVerificationRepository<AccountVerification> {

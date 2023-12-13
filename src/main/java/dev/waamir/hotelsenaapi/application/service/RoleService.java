@@ -13,6 +13,9 @@ import dev.waamir.hotelsenaapi.domain.model.Role;
 import dev.waamir.hotelsenaapi.domain.port.IRoleRepository;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class RoleService implements IRoleRepository<Role> {

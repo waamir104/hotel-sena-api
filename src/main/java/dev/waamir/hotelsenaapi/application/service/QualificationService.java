@@ -12,6 +12,9 @@ import dev.waamir.hotelsenaapi.domain.model.Qualification;
 import dev.waamir.hotelsenaapi.domain.port.IQualificationRepository;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class QualificationService implements IQualificationRepository<Qualification> {

@@ -11,6 +11,9 @@ import dev.waamir.hotelsenaapi.domain.model.User;
 import dev.waamir.hotelsenaapi.domain.port.ITokenRepository;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class TokenService implements ITokenRepository<Token> {

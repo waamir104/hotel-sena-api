@@ -12,6 +12,9 @@ import dev.waamir.hotelsenaapi.domain.model.User;
 import dev.waamir.hotelsenaapi.domain.port.IUserRepository;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class UserService implements IUserRepository<User> {

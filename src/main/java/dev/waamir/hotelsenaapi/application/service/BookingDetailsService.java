@@ -12,6 +12,9 @@ import dev.waamir.hotelsenaapi.domain.model.BookingDetails;
 import dev.waamir.hotelsenaapi.domain.port.IBookingDetailsRepository;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class BookingDetailsService implements IBookingDetailsRepository<BookingDetails> {

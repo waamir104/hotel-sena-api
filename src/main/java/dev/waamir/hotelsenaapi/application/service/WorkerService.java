@@ -12,6 +12,9 @@ import dev.waamir.hotelsenaapi.domain.model.Worker;
 import dev.waamir.hotelsenaapi.domain.port.IWorkerRepository;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class WorkerService implements IWorkerRepository<Worker> {
