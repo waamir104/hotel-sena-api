@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -26,7 +27,7 @@ public class User implements UserDetails {
 
     @Id
     @Field(name = "_id")
-    private String id;
+    private ObjectId id;
     @Field(name = "username")
     private String username;
     @Field(name = "password")

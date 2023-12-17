@@ -1,5 +1,6 @@
 package dev.waamir.hotelsenaapi.domain.model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -19,7 +20,7 @@ public class Role {
     
     @Id
     @Field(name = "_id")
-    private String id;
+    private ObjectId id;
     @Field(name = "name")
     private RoleName name;
 }

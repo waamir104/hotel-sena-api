@@ -4,6 +4,7 @@ import dev.waamir.hotelsenaapi.domain.enumeration.BookingStatus;
 import dev.waamir.hotelsenaapi.domain.model.Booking;
 import dev.waamir.hotelsenaapi.domain.model.Guest;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -11,7 +12,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IBookingMongoRepository extends MongoRepository<Booking, String> {
+public interface IBookingMongoRepository extends MongoRepository<Booking, ObjectId> {
 
     Page<Booking> findByGuest(Guest guest, Pageable pagination);
 

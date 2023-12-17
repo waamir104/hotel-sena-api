@@ -3,6 +3,7 @@ package dev.waamir.hotelsenaapi.application.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class RoomService implements IRoomRepository<Room> {
     }
 
     @Override
-    public Optional<Room> getById(String id) {
+    public Optional<Room> getById(ObjectId id) {
         return roomMongoRepository.findById(id);
     }
 

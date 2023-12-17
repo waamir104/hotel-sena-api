@@ -1,5 +1,6 @@
 package dev.waamir.hotelsenaapi.domain.model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -19,7 +20,7 @@ public class BookingDetails {
     
     @Id
     @Field(name = "_id")
-    private String id;
+    private ObjectId id;
     @DBRef
     @Field(name = "booking_id")
     private Booking booking;
