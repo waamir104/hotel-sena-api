@@ -28,6 +28,7 @@ public class SecurityFilterChainConfig {
 
     // Fill with the resource's paths
     private static final String[] WHITE_LIST_URLS = {
+        "/api/v1/auth/**"
     };
     private static final String[] GET_ADMIN_WORKER_PATHS = {
     };
