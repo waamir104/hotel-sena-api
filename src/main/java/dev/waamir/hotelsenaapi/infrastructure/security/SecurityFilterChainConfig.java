@@ -28,7 +28,8 @@ public class SecurityFilterChainConfig {
 
     // Fill with the resource's paths
     private static final String[] WHITE_LIST_URLS = {
-        "/api/v1/auth/**"
+        "/api/v1/auth/**", "/api/v1/room/list", "/api/v1/room/{id}",
+        "/api/v1/room/number/{number}", "/api/v1/roomType/list"
     };
     private static final String[] GET_ADMIN_WORKER_PATHS = {
     };
@@ -39,8 +40,10 @@ public class SecurityFilterChainConfig {
     private static final String[] DELETE_ADMIN_WORKER_PATHS = {
     };
     private static final String[] POST_ADMIN_PATHS = {
+        "/api/v1/room/register", "/api/v1/roomType/register"
     };
     private static final String[] PUT_ADMIN_PATHS = {
+        "/api/v1/room/update", "/api/v1/roomType/update"
     };
     private static final String[] GET_ADMIN_PATHS = {
     };
