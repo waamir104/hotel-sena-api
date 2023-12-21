@@ -7,15 +7,15 @@ import lombok.NoArgsConstructor;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Document(collection = "rooms")
-
 public class Room {
     @Id
     @Field(name = "_id")
@@ -24,7 +24,7 @@ public class Room {
     private Long number;
     @Field(name = "description")
     private String description;
-    @DBRef
+    @DocumentReference(collection = "room_types", lazy = true, db = "hotel_sena_api")
     @Field(name = "room_type_id")
     private RoomType roomType;
 }
