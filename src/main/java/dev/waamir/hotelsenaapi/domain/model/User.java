@@ -6,12 +6,14 @@ import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,9 +36,10 @@ public class User implements UserDetails {
     private String password;
     @Field(name = "enabled")
     private Boolean enabled;
-    @DBRef
+    @DocumentReference(collection = "roles", lazy = true, db = "hotel_sena_api")
     @Field(name = "role_id")
     private Role role;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Field(name = "created_at")
     private LocalDateTime createdAt;
     

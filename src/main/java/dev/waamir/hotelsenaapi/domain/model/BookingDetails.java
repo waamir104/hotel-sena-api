@@ -2,8 +2,8 @@ package dev.waamir.hotelsenaapi.domain.model;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import lombok.AllArgsConstructor;
@@ -21,7 +21,7 @@ public class BookingDetails {
     @Id
     @Field(name = "_id")
     private ObjectId id;
-    @DBRef
+    @DocumentReference(collection = "bookings", lazy = true, db = "hotel_sena_api")
     @Field(name = "booking_id")
     private Booking booking;
     @Field(name = "cant_people")

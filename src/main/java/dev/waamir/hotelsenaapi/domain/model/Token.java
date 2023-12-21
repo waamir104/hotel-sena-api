@@ -2,8 +2,8 @@ package dev.waamir.hotelsenaapi.domain.model;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import dev.waamir.hotelsenaapi.domain.enumeration.TokenType;
@@ -28,7 +28,7 @@ public class Token {
     private TokenType type;
     @Field(name = "revoked")
     private boolean revoked;
-    @DBRef
+    @DocumentReference(collection = "users", lazy = true, db = "hotel_sena_api")
     @Field(name = "user_id")
     private User user;
 }

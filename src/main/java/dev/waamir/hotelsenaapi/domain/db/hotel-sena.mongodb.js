@@ -40,22 +40,6 @@ db.createCollection("roles", {
 
 db.roles.createIndex({ name : 1 }, { unique : true });
 
-// Dumping data for collection roles
-db.roles.insertMany([
-    {
-        _id: ObjectId('65693d8dab5126c82e633d74'),
-        name: "ADMIN"
-    },
-    {
-        _id: ObjectId('65693d8dab5126c82e633d73'),
-        name: "GUEST"
-    },
-    {
-        _id: ObjectId('65693d8dab5126c82e633d75'),
-        name: "WORKER"
-    }
-]);
-
 // Collection structure for collection users
 db.createCollection("users", {
     autoIndexId: true,
@@ -86,8 +70,8 @@ db.createCollection("users", {
                     description: "must be a boolean and is required"
                 },
                 role_id: {
-                    bsonType: "object",
-                    description: "must be an object and is required"
+                    bsonType: "objectId",
+                    description: "must be an objecId and is required"
                 },
                 created_at: {
                     bsonType: "date",
@@ -132,8 +116,8 @@ db.createCollection("tokens", {
                     description: "must be a boolean and is required"
                 },
                 user_id: {
-                    bsonType: "object",
-                    description: "must be an object and is required"
+                    bsonType: "objectId",
+                    description: "must be an objectId and is required"
                 }
             }
         }
@@ -164,8 +148,8 @@ db.createCollection("account_verifications", {
                     description: "must be a string and is required"
                 },
                 user_id: {
-                    bsonType: "object",
-                    description: "must be an object and is required"
+                    bsonType: "objectId",
+                    description: "must be an objectId and is required"
                 }
             }
         }
@@ -324,8 +308,8 @@ db.createCollection("rooms", {
                     description: "must be a string and is required"
                 },
                 room_type_id: {
-                    bsonType: "object",
-                    description: "must be an object and is required"
+                    bsonType: "objectId",
+                    description: "must be an objectId and is required"
                 }
             }
         }
@@ -390,8 +374,8 @@ db.createCollection("qualifications", {
                     description: "must be an objectId"
                 },
                 guest_id: {
-                    bsonType: "object",
-                    description: "must be an object and is required"
+                    bsonType: "objectId",
+                    description: "must be an objectId and is required"
                 },
                 stars: {
                     bsonType: "long",
@@ -426,8 +410,8 @@ db.createCollection("bookings", {
                     description: "must be an objectId"
                 },
                 guest_id: {
-                    bsonType: "object",
-                    description: "must be an object and id required"
+                    bsonType: "objectId",
+                    description: "must be an objectId and id required"
                 },
                 check_in: {
                     bsonType: "date",
