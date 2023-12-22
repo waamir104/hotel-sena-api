@@ -38,7 +38,7 @@ db.createCollection("roles", {
     validationLevel: "strict"
 });
 
-db.roles.createIndex({ name : 1 }, { unique : true });
+db.roles.createIndex({ name: 1 }, { unique: true });
 
 // Collection structure for collection users
 db.createCollection("users", {
@@ -83,7 +83,7 @@ db.createCollection("users", {
     validationLevel: "strict"
 });
 
-db.users.createIndex({ username : 1}, { unique : true });
+db.users.createIndex({ username: 1 }, { unique: true });
 
 // Collection structure for collection tokens
 db.createCollection("tokens", {
@@ -110,7 +110,7 @@ db.createCollection("tokens", {
                     bsonType: "string",
                     enum: ["BEARER"],
                     description: "must be a string and is required"
-                }, 
+                },
                 revoked: {
                     bsonType: "bool",
                     description: "must be a boolean and is required"
@@ -217,8 +217,8 @@ db.createCollection("workers", {
     validationLevel: "strict"
 });
 
-db.workers.createIndex({ email : 1}, { unique : true });
-db.workers.createIndex({ doc_number : 1}, { unique : true });
+db.workers.createIndex({ email: 1 }, { unique: true });
+db.workers.createIndex({ doc_number: 1 }, { unique: true });
 
 // Collection structure for collection guests
 db.createCollection("guests", {
@@ -279,8 +279,8 @@ db.createCollection("guests", {
     validationLevel: "strict"
 });
 
-db.guests.createIndex({ email : 1}, { unique : true });
-db.guests.createIndex({ doc_number : 1}, { unique : true });
+db.guests.createIndex({ email: 1 }, { unique: true });
+db.guests.createIndex({ doc_number: 1 }, { unique: true });
 
 // Collection structure for collection rooms
 db.createCollection("rooms", {
@@ -317,7 +317,7 @@ db.createCollection("rooms", {
     validationLevel: "strict"
 });
 
-db.rooms.createIndex({ number : 1}, { unique : true });
+db.rooms.createIndex({ number: 1 }, { unique: true });
 
 // Collection structure for collection room_types
 db.createCollection("room_types", {
@@ -354,7 +354,7 @@ db.createCollection("room_types", {
     validationLevel: "strict"
 });
 
-db.room_types.createIndex({ name : 1}, { unique : true });
+db.room_types.createIndex({ name: 1 }, { unique: true });
 
 // Collection structure for collection qualifications
 db.createCollection("qualifications", {
@@ -463,7 +463,7 @@ db.createCollection("booking_details", {
                 },
                 booking_id: {
                     bsonType: "objectId",
-                    description: "must be an objectId is required"
+                    description: "must be an objectId and is required"
                 },
                 cant_people: {
                     bsonType: "long",
@@ -479,6 +479,33 @@ db.createCollection("booking_details", {
     validationLevel: "strict"
 });
 
-db.booking_details.createIndex({ booking_id : 1}, { unique : true });
+db.booking_details.createIndex({ booking_id: 1 }, { unique: true });
 
-db.roles.find({});
+// Collection structure for collection payment_types
+db.createCollection("payment_types", {
+    autoIndexId: true,
+    collation: {
+    locale: "es",
+    caseLevel: true,
+    strength: 2
+    },
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["name"],
+            properties: {
+                _id: {
+                    bsonType: "objectId",
+                    description: "must be an objectId an is required"
+                },
+                name: {
+                    bsonType: "string",
+                    description: "must be a string and is required"
+                }
+            }
+        }
+    },
+    validationLevel: "strict"
+});
+
+db.payment_types.createIndex({ name: 1 }, { unique: true });
