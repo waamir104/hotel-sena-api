@@ -1,6 +1,5 @@
 package dev.waamir.hotelsenaapi.domain.model;
 
-import dev.waamir.hotelsenaapi.domain.enumeration.PaymentType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
