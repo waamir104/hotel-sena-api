@@ -40,16 +40,17 @@ public class SecurityFilterChainConfig {
     private static final String[] DELETE_ADMIN_WORKER_PATHS = {
     };
     private static final String[] POST_ADMIN_PATHS = {
-        "/api/v1/room/register", "/api/v1/roomType/register"
+        "/api/v1/room/register", "/api/v1/roomType/register", "/api/v1/paymentType/register"
     };
     private static final String[] PUT_ADMIN_PATHS = {
-        "/api/v1/room/update", "/api/v1/roomType/update"
+        "/api/v1/room/update", "/api/v1/roomType/update", "/api/v1/paymentType/update"
     };
     private static final String[] GET_ADMIN_PATHS = {
     };
     private static final String[] DELETE_ADMIN_PATHS = {
     };
     private static final String[] GET_ADMIN_WORKER_GUEST_PATHS = {
+        "/api/v1/paymentType/list", "/api/v1/paymentType/{id}"
     };
     private static final String[] POST_ADMIN_WORKER_GUEST_PATHS = {
     };
