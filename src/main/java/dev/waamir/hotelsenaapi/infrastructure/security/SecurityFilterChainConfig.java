@@ -32,10 +32,14 @@ public class SecurityFilterChainConfig {
         "/api/v1/room/number/{number}", "/api/v1/roomType/list"
     };
     private static final String[] GET_ADMIN_WORKER_PATHS = {
+        "/api/v1/guest/list", "/api/v1/guest/docNumber/{number}", "/api/v1/guest/{id}",
+        "/api/v1/guest/email/{email}"
     };
     private static final String[] PUT_ADMIN_WORKER_PATHS = {
+        "/api/v1/guest/update"
     };
     private static final String[] POST_ADMIN_WORKER_PATHS = {
+        "/api/v1/guest/register"
     };
     private static final String[] DELETE_ADMIN_WORKER_PATHS = {
     };
