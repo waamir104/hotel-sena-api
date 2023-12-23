@@ -1,5 +1,6 @@
 package dev.waamir.hotelsenaapi.domain.model;
 
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,8 +12,12 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Address {
 
-    private String nomeclature;
+    @NotEmpty
+    private String nomenclature;
+    @NotEmpty
     private String numeration;
+    @NotEmpty
     private String neighbourhood;
+    @NotEmpty
     private String city;
 }

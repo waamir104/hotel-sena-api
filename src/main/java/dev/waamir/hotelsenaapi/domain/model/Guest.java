@@ -10,6 +10,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import dev.waamir.hotelsenaapi.domain.enumeration.DocType;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class Guest {
     @Field(name = "doc_number")
     private Long docNumber;
     @Field(name = "doc_type")
-    private String docType;
+    private DocType docType;
     @Field(name = "name")
     private String name;
     @Field(name = "last_name")
