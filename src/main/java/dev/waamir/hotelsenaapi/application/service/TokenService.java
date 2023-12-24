@@ -45,4 +45,13 @@ public class TokenService implements ITokenRepository<Token> {
         return tokenMongoRepository.findByToken(token);
     }
 
+    @Override
+    public void revokeAllUserTokens(User user) {
+        List<Token> validUserTokens = getAllValidTokensByUser(user);
+        if (validUserTokens.isEmpty()) return;
+        validUserTokens.forEach(t -> {
+            t.setRevoked(true);
+        });
+        updateAll(validUserTokens);
+    }
 }

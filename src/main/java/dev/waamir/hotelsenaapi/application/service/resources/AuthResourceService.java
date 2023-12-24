@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import static dev.waamir.hotelsenaapi.domain.enumeration.RoleName.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import dev.waamir.hotelsenaapi.adapter.dto.MessageResponse;
 import dev.waamir.hotelsenaapi.adapter.dto.email.EmailDetails;
@@ -107,7 +106,7 @@ public class AuthResourceService {
             )
         );
         String jwt = jwtService.generateJwt(user);
-        revokeAllUserTokens(user);
+        tokenRepository.revokeAllUserTokens(user);
         saveUserToken(user, jwt);
         return AuthResponse.builder()
             .token(jwt)
@@ -171,24 +170,15 @@ public class AuthResourceService {
 
     private void saveUserToken(User user, String jwt) {
         Token token = Token.builder()
-            .user(user)
-            .token(jwt)
-            .type(TokenType.BEARER)
-            .revoked(false)
-            .build();
+        .token(jwt)
+        .user(user)
+        .revoked(false)
+        .type(TokenType.BEARER)
+        .build();
         tokenRepository.create(token);
     }
 
     private String getVerificationUrl(String key, String type) {
         return frontHost.concat("/verify/" + type + "/" + key);
-    }
-
-    private void revokeAllUserTokens(User user) {
-        List<Token> validUserTokens = tokenRepository.getAllValidTokensByUser(user);
-        if (validUserTokens.isEmpty()) return;
-        validUserTokens.forEach(t -> {
-            t.setRevoked(true);
-        });
-        tokenRepository.updateAll(validUserTokens);
     }
 }
