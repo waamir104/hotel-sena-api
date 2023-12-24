@@ -65,13 +65,13 @@ public class AuthResource {
             );
     }
 
-    @PutMapping("/verify/{type}/{userId}")
+    @PutMapping("/verify/{type}/{encodedUserId}")
     public ResponseEntity<ApiResponse> verify (
         @PathVariable String type,
-        @PathVariable String userId
+        @PathVariable String encodedUserId
     ) {
-        String url = frontHost.concat("/verify/" + type + "/" + userId);
-        MessageResponse msg = authResourceService.verify(type, userId, url);
+        String url = frontHost.concat("/verify/" + type + "/" + encodedUserId);
+        MessageResponse msg = authResourceService.verify(type, encodedUserId, url);
         return ResponseEntity
             .ok()
             .body(

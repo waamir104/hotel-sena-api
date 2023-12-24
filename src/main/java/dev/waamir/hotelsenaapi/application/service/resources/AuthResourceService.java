@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 
 import static dev.waamir.hotelsenaapi.domain.enumeration.RoleName.*;
 
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.util.Base64.Decoder;
+import java.util.Base64.Encoder;
 
 import dev.waamir.hotelsenaapi.adapter.dto.MessageResponse;
 import dev.waamir.hotelsenaapi.adapter.dto.email.EmailDetails;
@@ -50,6 +53,8 @@ public class AuthResourceService {
     private final IEmailService emailService;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
+    private final Encoder encoder;
+    private final Decoder decoder;
     private final AuthenticationManager authManager;
 
     public AuthResponse register(AuthRegisterRequest request) {
@@ -67,7 +72,10 @@ public class AuthResourceService {
             .enabled(false)
             .build();
         user = userRepository.create(user);
-        String verificationUrl = getVerificationUrl(user.getId().toString(), "ACCOUNT");
+        String verificationUrl = getVerificationUrl(
+            encoder.encodeToString(user.getId().toString().getBytes(StandardCharsets.UTF_8)), 
+            "ACCOUNT"
+        );
         AccountVerification accountVerification = AccountVerification.builder()
             .url(verificationUrl)
             .user(user)
@@ -114,10 +122,11 @@ public class AuthResourceService {
             .build();
     }
 
-    public MessageResponse verify(String type, String userId, String url) {
+    public MessageResponse verify(String type, String encodedUserId, String url) {
         if (!(accountVerificationRepository.getUrlCount(url) == Integer.valueOf(1))) throw new ApiException("An error ocurred validating the url.", HttpStatus.BAD_REQUEST);
-        User user = userRepository.getById(new ObjectId(userId)).orElseThrow(() -> {
-            System.out.println(userId);
+        User user = userRepository.getById(
+            new ObjectId(new String(decoder.decode(encodedUserId), StandardCharsets.UTF_8))
+        ).orElseThrow(() -> {
             throw new ApiException("User not found.", HttpStatus.BAD_REQUEST);
         });
         if (type.equals("ACCOUNT")) {
