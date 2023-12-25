@@ -26,7 +26,6 @@ public class SecurityFilterChainConfig {
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final LogoutHandler logoutHandler;
 
-    // Fill with the resource's paths
     private static final String[] WHITE_LIST_URLS = {
         "/api/v1/auth/**", "/api/v1/room/list", "/api/v1/room/{id}",
         "/api/v1/room/number/{number}", "/api/v1/roomType/list"
@@ -51,7 +50,8 @@ public class SecurityFilterChainConfig {
         "/api/v1/room/update", "/api/v1/roomType/update", "/api/v1/paymentType/update"
     };
     private static final String[] GET_ADMIN_PATHS = {
-        "/api/v1/user/{id}", "/api/v1/user/username/{username}", "/api/v1/user/list"
+        "/api/v1/user/{id}", "/api/v1/user/username/{username}", "/api/v1/user/list",
+        "/api/v1/role/list"
     };
     private static final String[] DELETE_ADMIN_PATHS = {
     };
