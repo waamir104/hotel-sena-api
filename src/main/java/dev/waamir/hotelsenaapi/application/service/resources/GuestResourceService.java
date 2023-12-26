@@ -3,16 +3,19 @@ package dev.waamir.hotelsenaapi.application.service.resources;
 import java.util.Objects;
 
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import dev.waamir.hotelsenaapi.adapter.dto.email.EmailDetails;
 import dev.waamir.hotelsenaapi.adapter.dto.resources.guest.GuestRegisterRequest;
 import dev.waamir.hotelsenaapi.adapter.dto.resources.guest.GuestResponse;
 import dev.waamir.hotelsenaapi.adapter.dto.resources.guest.GuestUpdateRequest;
 import dev.waamir.hotelsenaapi.domain.model.Guest;
 import dev.waamir.hotelsenaapi.domain.model.User;
+import dev.waamir.hotelsenaapi.domain.port.IEmailService;
 import dev.waamir.hotelsenaapi.domain.port.IGuestRepository;
 import dev.waamir.hotelsenaapi.domain.port.IUserRepository;
 import dev.waamir.hotelsenaapi.infrastructure.rest.spring.exception.ApiException;
@@ -21,9 +24,13 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class GuestResourceService {
+
+    @Value("${application.front-end.host}")
+    private String fronthost;
     
     private final IGuestRepository<Guest> guestRepository;
     private final IUserRepository<User> userRepository;
+    private final IEmailService emailService;
 
     public Page<GuestResponse> list(Pageable pagination) {
         return guestRepository.list(pagination).map(GuestResponse::new);
@@ -64,6 +71,14 @@ public class GuestResourceService {
             .phoneNumbers(request.phoneNumbers())
             .build();
         guest = guestRepository.create(guest);
+        EmailDetails emailDetails = EmailDetails.builder()
+            .recipient(guest.getEmail())
+            .subject("Registration Confirmation")
+            .msgBody(
+                emailService.getRegistrationMessage(guest, fronthost)
+            )
+            .build();
+        emailService.sendEmail(emailDetails);
         return new GuestResponse(guest);
     }
 
