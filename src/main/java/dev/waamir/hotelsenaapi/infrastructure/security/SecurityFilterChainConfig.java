@@ -32,7 +32,7 @@ public class SecurityFilterChainConfig {
     };
     private static final String[] GET_ADMIN_WORKER_PATHS = {
         "/api/v1/guest/list", "/api/v1/guest/docNumber/{number}", "/api/v1/guest/{id}",
-        "/api/v1/guest/email/{email}"
+        "/api/v1/guest/email/{email}", "/api/v1/accountVerification/resend/{username}"
     };
     private static final String[] PUT_ADMIN_WORKER_PATHS = {
         "/api/v1/guest/update"
