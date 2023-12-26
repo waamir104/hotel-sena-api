@@ -61,15 +61,16 @@ public class UserResourceService {
                 throw new ApiException("Role not found.", HttpStatus.NOT_FOUND);
             }
         );
+        boolean enabled = !(role.getName() == RoleName.GUEST);
         User user = User.builder()
             .username(request.username())
             .password(passwordEncoder.encode(request.password()))
-            .enabled(request.enabled())
+            .enabled(enabled)
             .role(role)
             .createdAt(LocalDateTime.now())
             .build();
         userRepository.create(user);
-        if ((user.getRole().getName() == RoleName.GUEST) && !user.isEnabled()) {
+        if (user.getRole().getName() == RoleName.GUEST) {
             String verificationUrl = getVerificationUrl(
                             encoder.encodeToString(user.getId().toString().getBytes(StandardCharsets.UTF_8)), 
                             "ACCOUNT"
