@@ -2,6 +2,7 @@ package dev.waamir.hotelsenaapi.application.service.resources;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Base64.Encoder;
 
 import org.bson.types.ObjectId;
@@ -99,6 +100,30 @@ public class UserResourceService {
             }
         );
         return new UserResponse(user);
+    }
+
+    public void disable(String username) {
+        User user = userRepository.getByUsername(username).orElseThrow(
+            () -> {
+                throw new ApiException("User not found", HttpStatus.NOT_FOUND);
+            }
+        );
+        user.setEnabled(false);
+        userRepository.update(user);
+        AccountVerification accountVerification = accountVerificationRepository.getByUser(user).orElse(null);
+        if (!Objects.isNull(accountVerification)) {
+            accountVerificationRepository.delete(accountVerification);
+        }
+    }
+
+    public void enable(String username) {
+        User user = userRepository.getByUsername(username).orElseThrow(
+            () -> {
+                throw new ApiException("User not found", HttpStatus.NOT_FOUND);
+            }
+        );
+        user.setEnabled(true);
+        userRepository.update(user);
     }
 
     private String getVerificationUrl(String key, String type) {

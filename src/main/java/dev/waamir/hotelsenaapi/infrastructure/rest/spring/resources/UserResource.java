@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -95,6 +96,38 @@ public class UserResource {
                     .data(
                         userResourceService.register(request)
                     )
+                    .build()
+            );
+    }
+
+    @PutMapping("/disable/{username}")
+    public ResponseEntity<ApiResponse> disable(
+        @PathVariable @NotEmpty String username
+    ) {
+        userResourceService.disable(username);
+        return ResponseEntity
+            .ok()
+            .body(
+                ApiResponse.builder()
+                    .timeStamp(LocalDateTime.now())
+                    .status(HttpStatus.OK)
+                    .message("User disabled successfully.")
+                    .build()
+            );
+    }
+
+    @PutMapping("/enable/{username}")
+    public ResponseEntity<ApiResponse> enable(
+        @PathVariable @NotEmpty String username
+    ) {
+        userResourceService.enable(username);
+        return ResponseEntity
+            .ok()
+            .body(
+                ApiResponse.builder()
+                    .timeStamp(LocalDateTime.now())
+                    .status(HttpStatus.OK)
+                    .message("User enabled successfully.")
                     .build()
             );
     }
