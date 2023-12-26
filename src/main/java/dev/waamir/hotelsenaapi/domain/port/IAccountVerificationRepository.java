@@ -9,4 +9,5 @@ public interface IAccountVerificationRepository<T extends AccountVerification> {
     T create(T accountVerification);
     Optional<T> getByUser(User user);
     Integer getUrlCount(String url);
+    void delete(T accountVerification);
 }

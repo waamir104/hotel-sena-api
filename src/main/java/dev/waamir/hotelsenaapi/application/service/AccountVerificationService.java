@@ -33,5 +33,10 @@ public class AccountVerificationService implements IAccountVerificationRepositor
     public Integer getUrlCount(String url) {
         return accountVerificationMongoRepository.countByUrl(url);
     }
+
+    @Override
+    public void delete(AccountVerification accountVerification) {
+        accountVerificationMongoRepository.delete(accountVerification);
+    }
     
 }
